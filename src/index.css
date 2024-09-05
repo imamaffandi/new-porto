@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Fonts */
+@font-face {
+  font-family: "Helvetica";
+  src: url("./fonts/Helvetica.ttf");
+}
+.helvetica {
+  font-family: "Helvetica";
+}
+.bebas {
+  font-family: "Bebas Neue";
+}
+.montserrat {
+  font-family: "Montserrat";
+}
