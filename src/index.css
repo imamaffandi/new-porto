@@ -2,6 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  overflow-x: hidden;
+  cursor: none;
+}
 /* Fonts */
 @font-face {
   font-family: "Helvetica";
@@ -10,9 +14,40 @@
 .helvetica {
   font-family: "Helvetica";
 }
-.bebas {
-  font-family: "Bebas Neue";
-}
 .montserrat {
   font-family: "Montserrat";
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Cursor */
+
+.cursor {
+  position: fixed;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+}
+
+.cursors .cursor:nth-child(1) {
+  background-color: #151515;
+  z-index: 100002;
+}
+.cursors .cursor:nth-child(2) {
+  background-color: #ef4444;
+  z-index: 100001;
+  height: 20px;
+  width: 20px;
 }
