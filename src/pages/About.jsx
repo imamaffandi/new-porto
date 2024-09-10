@@ -1,5 +1,4 @@
 import React from "react";
-import { ellipse } from "../assets/asset";
 const services = [
   "Wireframes",
   "Prototyping",
@@ -20,27 +19,27 @@ const About = () => {
             About Me
           </p>
           <p className="text-md montserrat text-dark text-justify p-3 pt-1 py-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-            est reprehenderit voluptatibus harum magni eius? Amet tempora
-            reiciendis aut, velit repellendus aliquid quasi facere molestias?
-            Repudiandae, at ab? Porro cumque illo sint ipsam. Reprehenderit
-            temporibus doloremque, harum mollitia, unde, voluptas possimus enim
-            magni perferendis dolorum quis animi dignissimos facilis adipisci?{" "}
+            I'm Imam Affandi. Born in Malang, Indonesia, I like coding, hiking,
+            and MCR. I started to learn code in vocational high school. I have a
+            keen interest in building responsive and stylish websites, I like to
+            learn new things. Now, I am learning Node.js and MongoDB to know
+            about backend and database development. I will do anything to
+            achieve my goals, even if it make my gerd even worse.
           </p>
           <a
-            // href="/path/to/your/cv.pdf"
-            // download="YourName_CV.pdf"
-            className="cursor-none text-7xl helvetica text-dark text-justify p-1 mx-2 py-2 pt-7 border-b-2 border-dark"
-            // onClick={(e) => {
-            //   e.preventDefault();
-            //   window.open("/path/to/your/cv.pdf", "_blank");
-            // }}
+            href="../assets/cv/FrontEnd.pdf"
+            download="Imamaffandi_CV.pdf"
+            className="hoverable cursor-none text-7xl helvetica text-dark text-justify p-1 mx-2 py-2 pt-7 border-b-2 border-dark"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open("../assets/cv/FrontEnd.pdf", "_blank");
+            }}
           >
             CV
           </a>
           <a
             href="/"
-            className="text-7xl cursor-none helvetica text-dark text-justify p-1 py-3 mx-2 border-b-2 border-dark"
+            className="hoverable text-7xl cursor-none helvetica text-dark text-justify p-1 py-3 mx-2 border-b-2 border-dark"
           >
             Instagram
           </a>

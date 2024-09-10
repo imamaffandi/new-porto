@@ -42,12 +42,14 @@ body {
 }
 
 .cursors .cursor:nth-child(1) {
-  background-color: #151515;
+  background-color: #ef4444;
   z-index: 100002;
 }
 .cursors .cursor:nth-child(2) {
-  background-color: #ef4444;
+  mix-blend-mode: difference;
+  background-color: #fff;
+
   z-index: 100001;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }

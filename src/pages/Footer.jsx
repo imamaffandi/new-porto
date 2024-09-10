@@ -7,30 +7,22 @@ const Footer = () => {
       <p className="absolute inset-[10rem] text-accent helvetica text-5xl font-black">
         CONTACT
       </p>
-      <table className="absolute border border-dark bottom-20 right-20 border-collapse">
-        <thead>
-          <th className="montserrat border-b border-dark text-md hover:text-accent font-bold">
-            imamaffandi715@gmail.com
-          </th>
-        </thead>
-        <tbody>
-          <tr className="flex justify-between px-3">
-            {socialMedia.map((social) => (
-              <td
-                href={social.link}
-                key={social.name}
-                className="cursor-none hover:scale-105 focus:scale-90"
-              >
-                <img
-                  src={social.icon}
-                  alt={social.name}
-                  className="w-10 h-10"
-                />
-              </td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
+      <main className="absolute top-[20rem] left-[5rem] helvetica text-8xl font-medium hover:text-accent">
+        imamaffandi715@gmail.com
+      </main>
+      <section className="absolute bottom-20 right-20 border-collapse">
+        <div className="flex justify-between px-3">
+          {socialMedia.map((social) => (
+            <a
+              href={social.link}
+              key={social.name}
+              className="cursor-none uppercase hover:text-accent helvetica text-dark font-medium px-1"
+            >
+              {social.name}
+            </a>
+          ))}
+        </div>
+      </section>
     </footer>
   );
 };

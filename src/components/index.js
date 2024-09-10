@@ -1,3 +1,4 @@
 import Loaders from "./Loaders";
 import Cursor from "./Cursor";
-export { Loaders, Cursor };
+import Flip from "./Flip";
+export { Loaders, Cursor, Flip };

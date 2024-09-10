@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { projects } from "../constant/constant";
 import { SectionWrapper } from "../HOC";
-import { motion } from "framer-motion";
 import { container, itemLeft } from "../utils/motion";
 
 const Projects = () => {
@@ -16,16 +15,10 @@ const Projects = () => {
   return (
     <>
       <section className="px-10 ">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          className="w-full flex-col justify-between items-center divide-y-2  pt-20"
-        >
+        <div className="w-full flex-col justify-between items-center divide-y-2  pt-20">
           {projects.map((project) => {
             return (
-              <motion.div
-                variants={itemLeft}
+              <div
                 key={project.index}
                 className=" flex justify-between items-center h-20 relative"
                 onMouseMove={handleMouseMove}
@@ -33,10 +26,7 @@ const Projects = () => {
                 onMouseLeave={() => setHoveredIndex(-1)}
               >
                 {hoveredIndex === project.index && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6 }}
+                  <div
                     className="overflow-hidden rounded-md"
                     style={{
                       position: "fixed",
@@ -53,7 +43,7 @@ const Projects = () => {
                       alt={project.name}
                       className="w-56 h-32 object-cover "
                     />
-                  </motion.div>
+                  </div>
                 )}
 
                 <div className="flex justify-between items-center w-full  ">
@@ -105,10 +95,10 @@ const Projects = () => {
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </section>
     </>
   );

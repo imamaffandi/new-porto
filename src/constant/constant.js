@@ -22,22 +22,22 @@ const links = [
 ];
 const socialMedia = [
   {
-    name: "Instagram",
+    name: "Ig",
     icon: instagram,
     link: "https://www.instagram.com/imamaffandi715/",
   },
   {
-    name: "Github",
+    name: "Gh",
     icon: github,
     link: "https://www.github.com/imamaffandi715/",
   },
   {
-    name: "Linkedin",
+    name: "Ln",
     icon: linkedin,
     link: "https://www.linkedin.com/in/imamaffandi715/",
   },
   {
-    name: "Fiverr",
+    name: "Fr",
     icon: fiverr,
     link: "https://www.whatsapp.com/imamaffandi715/",
   },
