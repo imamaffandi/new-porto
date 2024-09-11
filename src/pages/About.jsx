@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const services = [
   "Wireframes",
   "Prototyping",
@@ -11,10 +14,72 @@ const services = [
 ];
 const skills = ["React", "Framer Motion", "THREE.JS", "Tailwind", "Figma"];
 const About = () => {
+  const mainRef = useRef(null);
+  const leftColumnRef = useRef(null);
+  const rightColumnRef = useRef(null);
+  const experienceBoxRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(leftColumnRef.current, {
+        yPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
+
+      gsap.to(rightColumnRef.current, {
+        yPercent: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
+
+      gsap.to(experienceBoxRef.current, {
+        yPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
+      gsap.to(imageRef.current, {
+        yPercent: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main className="relative">
+    <main className="relative" ref={mainRef}>
       <div className="flex justify-center items-center gap-3 h-screen p-10">
-        <div className="w-1/2 flex flex-col h-full bg-zinc-300">
+        <div
+          ref={leftColumnRef}
+          className="w-1/2 flex flex-col h-full bg-zinc-300"
+        >
           <p className="text-8xl text-dark px-3 font-black helvetica">
             About Me
           </p>
@@ -44,7 +109,10 @@ const About = () => {
             Instagram
           </a>
         </div>
-        <div className="w-1/2 text-center h-full flex flex-col gap-3 justify-center items-center">
+        <div
+          ref={rightColumnRef}
+          className="w-1/2 text-center h-full flex flex-col gap-3 justify-center items-center"
+        >
           <div className=" h-1/2 w-full text-justify bg-stone-300 overflow-hidden">
             <p className="text-justify helvetica font-black text-5xl">
               {services.map((service, index) => (
@@ -60,9 +128,10 @@ const About = () => {
           <div className="text-xl flex justify-center items-center h-1/2 w-full gap-2 ">
             <div className="h-full w-1/2 full bg-neutral-300 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1723662887372-b6f42b6ccd50?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8"
+                ref={imageRef}
+                src="https://images.unsplash.com/photo-1720048170996-40507a45c720?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
                 alt="my picture"
-                className="w-full h-full object-cover hover:scale-110 transition-all duration-300"
+                className="size-full object-bottom object-cover scale-110"
               />
             </div>
             <div className="h-full w-1/2 full bg-gray-300 p-2 flex flex-col justify-center items-start">
@@ -78,7 +147,10 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className=" absolute w-72 h-80 bg-slate-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center">
+      <div
+        ref={experienceBoxRef}
+        className=" absolute w-72 h-80 bg-slate-300 -bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center"
+      >
         <div className="w-1/2 h-full  flex helvetica justify-center items-center">
           <p className="text-9xl font-black">3+</p>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { links } from "../constant/constant";
@@ -6,6 +6,10 @@ import { links } from "../constant/constant";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Navbar = () => {
+  const navlink = useRef(null);
+  const navmain = useRef(null);
+  const navinfo = useRef(null);
+  const navtime = useRef(null);
   const handleClick = (e, target) => {
     e.preventDefault();
     gsap.to(window, {
@@ -14,12 +18,46 @@ const Navbar = () => {
       ease: "power2.inOut",
     });
   };
+  useEffect(() => {
+    const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+    timeline
+      .fromTo(
+        navlink.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1 }
+      )
+      .fromTo(
+        navmain.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.3"
+      )
+      .fromTo(
+        navinfo.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.3"
+      )
+      .fromTo(
+        navtime.current,
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.3"
+      );
+  }, []);
   return (
-    <nav className="flex helvetica bg-transparent text-dark pt-2 justify-between items-start px-3 fixed top-0 left-0 right-0 z-50">
+    <nav className="flex helvetica mix-blend-difference bg-transparent text-white font-thin pt-2 justify-between items-start px-3 fixed top-0 left-0 right-0 z-50">
       <ul className="flex flex-col">
-        {links.map((link) => (
-          <li key={link.name} className="hover:text-accent ">
+        {links.map((link, index) => (
+          <li
+            key={link.name}
+            className="hover:text-accent"
+            ref={(el) => {
+              if (navlink.current === null) navlink.current = [];
+              navlink.current[index] = el;
+            }}
+          >
             <a
               href={`#${link.link}`}
               className="cursor-none"
@@ -30,12 +68,12 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div>
+      <div ref={navmain}>
         <p>Imam Affandi</p>
       </div>
-      <div>
+      <div ref={navinfo}>
         <p>Developer | Designer | Freelancer</p>
-        <p>
+        <p ref={navtime}>
           Indonesia (
           {(() => {
             const [time, setTime] = useState(
