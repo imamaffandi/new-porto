@@ -13,6 +13,8 @@ const App = () => {
       <About />
       <Projects />
       <Footer />
+      {/* <Minesweeper /> */}
+      {/* <Crow /> */}
     </div>
   );
 };

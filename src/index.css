@@ -48,8 +48,54 @@ body {
 .cursors .cursor:nth-child(2) {
   mix-blend-mode: difference;
   background-color: #fff;
-
   z-index: 100001;
   height: 30px;
   width: 30px;
+}
+
+/* Minesweepee */
+.subtext {
+  color: #ccc;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+}
+
+.board {
+  display: inline-grid;
+  padding: 3px;
+  grid-template-columns: repeat(var(--size), 60px);
+  grid-template-rows: repeat(var(--size), 60px);
+  gap: 1px;
+  background-color: #777;
+}
+
+.board > * {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 2px solid #bbb;
+  user-select: none;
+}
+
+.board > [data-status="hidden"] {
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+.board > [data-status="mine"] {
+  background-color: red;
+}
+
+.board > [data-status="number"] {
+  background-color: none;
+}
+
+.board > [data-status="marked"] {
+  background-color: yellow;
 }

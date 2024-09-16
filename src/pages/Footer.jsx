@@ -4,14 +4,12 @@ import { SectionWrapper } from "../HOC";
 const Footer = () => {
   return (
     <footer className="relative h-screen text-dark">
-      <p className="absolute inset-[10rem] text-accent helvetica text-8xl font-black">
-        CONTACT
+      <p className="helvetica absolute bottom-0 text-[5.5rem] text-center font-black uppercase">
+        imamaffandi715@gmail.com
       </p>
-      <section className="absolute bottom-20 right-20 border-collapse">
-        <main className="helvetica text-2xl font-extralight hover:text-accent">
-          imamaffandi715@gmail.com
-        </main>
-        <div className="flex justify-between px-3">
+      <section className="absolute flex flex-col gap-10 right-10 top-1/3 ">
+        <p className=" helvetica text-7xl font-black">CONTACT</p>
+        <div className="flex justify-between px-3 ">
           {socialMedia.map((social) => (
             <a
               href={social.link}
