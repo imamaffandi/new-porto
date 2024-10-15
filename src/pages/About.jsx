@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/all";
+import { profile } from "../assets";
 gsap.registerPlugin(ScrollTrigger);
 const services = [
   "Wireframes",
@@ -13,7 +14,13 @@ const services = [
   "SEO",
   "Security",
 ];
-const skills = ["React", "Framer Motion", "THREE.JS", "Tailwind", "Figma"];
+const skills = [
+  "React / Next",
+  "Framer Motion",
+  "WebGL / THREE.JS",
+  "Tailwind / CSS",
+  "Figma",
+];
 const About = () => {
   const mainRef = useRef(null);
   const aboutRef = useRef(null);
@@ -29,18 +36,11 @@ const About = () => {
         trigger: mainRef.current,
         start: "top",
         end: "bottom",
+        scrub: "true",
       },
     });
 
-    // tl.fromTo(
-    //   aboutRef.current,
-    //   { opacity: 0,  },
-    //   { opacity: 1,  },
-    //   0
-    // );
-    // tl.fromTo(servicesRef.current, { opacity: 0 }, { opacity: 1 }, "+=.1");
-    tl.fromTo(imageRef.current, { scale: 1.1 }, { scale: 1 }, "+=.1");
-    // tl.fromTo(skillsRef.current, { opacity: 0 }, { opacity: 1 }, "+=.1");
+    tl.fromTo(imageRef.current, { scale: 1 }, { scale: 1.2 });
 
     const ctx = gsap.context(() => {
       gsap.defaults({ ease: "none", duration: 2 });
@@ -71,40 +71,41 @@ const About = () => {
   return (
     <main className="relative" ref={mainRef}>
       <div className="flex justify-center items-center gap-3 h-screen p-10">
-        <div ref={aboutRef} className="w-1/2 flex flex-col h-full bg-zinc-300">
-          <p className="text-8xl text-dark px-3 font-black helvetica">
-            About Me
-          </p>
-          <p className="text-md montserrat text-dark text-justify p-3 pt-1 py-3">
-            I'm Imam Affandi. Born in Malang, Indonesia, I like coding, hiking,
-            and MCR. I started to learn code in vocational high school. I have a
-            keen interest in building responsive and stylish websites, I like to
-            learn new things. Now, I am learning Node.js and MongoDB to know
-            about backend and database development. I will do anything to
-            achieve my goals, even if it make my gerd even worse.
-          </p>
-          <a
-            href="../assets/cv/FrontEnd.pdf"
-            download="Imamaffandi_CV.pdf"
-            className="hoverable cursor-none text-7xl helvetica text-dark text-justify p-1 mx-2 py-2 pt-7 border-b-2 border-dark"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open("../assets/cv/FrontEnd.pdf", "_blank");
-            }}
-          >
-            CV
-          </a>
-          <a
-            href="/"
-            className="hoverable text-7xl cursor-none helvetica text-dark text-justify p-1 py-3 mx-2 border-b-2 border-dark "
-          >
-            Instagram
-          </a>
+        <div
+          ref={aboutRef}
+          className="w-1/2 flex flex-col justify-between py-2 h-full "
+        >
+          <div>
+            <p className="text-8xl text-dark px-3 font-black helvetica">
+              About Me
+            </p>
+            <p className="text-md montserrat text-dark text-justify p-3 pt-1 py-3">
+              I'm Imam Affandi. Born in Malang, Indonesia, I am a creative
+              front-end web developer with 3+ years of experience. I love to
+              create engaging, creative, and interactive websites.
+            </p>
+          </div>
+          <div className="flex flex-col">
+            <a
+              href="../assets/cv/FrontEnd.pdf"
+              download
+              className="hoverable cursor-none w-full h-full text-7xl helvetica text-dark text-justify p-1 mx-2 py-2 pt-7 border-b-2 border-dark"
+            >
+              CV
+            </a>
+            <a
+              href="https://www.instagram.com/imamaffandi01/"
+              target="_blank"
+              className="hoverable text-7xl w-full h-full cursor-none helvetica text-dark text-justify p-1 py-3 mx-2 border-b-2 border-dark "
+            >
+              Instagram
+            </a>
+          </div>
         </div>
         <div className="w-1/2 text-center h-full flex flex-col gap-3 justify-center items-center">
           <div
             ref={servicesRef}
-            className=" h-1/2 w-full text-justify bg-stone-300 overflow-hidden"
+            className=" h-1/2 w-full text-justify  overflow-hidden"
           >
             <p className="text-justify helvetica font-black text-5xl">
               {services.map((service, index) => (
@@ -121,14 +122,14 @@ const About = () => {
             <div className="h-full w-1/2 full  overflow-hidden">
               <img
                 ref={imageRef}
-                className="object-cover "
-                src="https://images.unsplash.com/photo-1720048170996-40507a45c720?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                className="object-cover grayscale"
+                src={profile}
                 alt="profile"
               />
             </div>
             <div
               ref={skillsRef}
-              className="h-full w-1/2 full bg-gray-300 p-2 flex flex-col justify-center items-start"
+              className="h-full w-1/2 full  p-2 flex flex-col justify-center items-start"
             >
               {skills.map((skill) => (
                 <p
@@ -144,7 +145,7 @@ const About = () => {
       </div>
       <div
         ref={experienceRef}
-        className=" absolute w-72 h-80 bg-slate-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center"
+        className=" absolute w-72 h-80 bg-zinc-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center"
       >
         <div className="w-1/2 h-full  flex helvetica justify-center items-center">
           <p className="text-9xl font-black">3+</p>

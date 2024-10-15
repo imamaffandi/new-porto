@@ -1,4 +1,6 @@
 import React from "react";
+import { gsap } from "gsap";
+
 class Cursor extends React.Component {
   constructor(props) {
     super(props);
@@ -66,9 +68,24 @@ class Cursor extends React.Component {
       () => {
         const scale = isHovered ? 3 : 1;
         const cursorScale = isHovered ? 1.5 : 1;
-        this.cursor.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) scale(${cursorScale})`;
-        this.cursor.current.style.transition = "transition all 0.15s ease-out";
-        this.cursorTrailing.current.style.transform = `translate3d(${trailingX}px, ${trailingY}px, 0) scale(${scale})`;
+
+        // Use GSAP for animations
+        gsap.to(this.cursor.current, {
+          x: mouseX,
+          y: mouseY,
+          scale: cursorScale,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        gsap.to(this.cursorTrailing.current, {
+          x: trailingX,
+          y: trailingY,
+          scale: scale,
+          duration: 1,
+          ease: "power2.out",
+        });
+
         this.animationFrame = requestAnimationFrame(this.moveCursor);
       }
     );

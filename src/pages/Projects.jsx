@@ -20,16 +20,23 @@ const Projects = () => {
             return (
               <div
                 key={project.name}
-                className=" flex justify-between hover:text-light items-center h-20 relative group"
+                className="flex justify-between hover:text-light items-center h-20 relative group"
                 onMouseMove={handleMouseMove}
                 onMouseEnter={() => setHoveredIndex(project.index)}
                 onMouseLeave={() => setHoveredIndex(-1)}
                 onClick={() => window.open(project.preview, "_blank")}
               >
-                <div className="w-0 -z-0 bg-dark absolute h-full transition-all duration-500 group-hover:w-full"></div>
+                <div className="hoverable w-0 -z-0 bg-dark absolute h-full transition-all duration-1000 group-hover:w-full"></div>
                 {hoveredIndex === project.index && (
                   <div
                     className="overflow-hidden rounded-md"
+                    onLoad={(e) => {
+                      gsap.fromTo(
+                        e.target,
+                        { scale: 0.5, opacity: 0 },
+                        { scale: 1, opacity: 1, duration: 0.1 }
+                      );
+                    }}
                     style={{
                       position: "fixed",
                       left:
@@ -47,8 +54,8 @@ const Projects = () => {
                     />
                   </div>
                 )}
-                <div className="flex justify-between items-center w-full ">
-                  <p className="z-10 transition-all duration-500 montserrat text-5xl cursor-none tracking-wide">
+                <div className="hoverable flex justify-between items-center w-full ">
+                  <p className="z-10 transition-all duration-1000 montserrat text-5xl cursor-none tracking-wide">
                     {project.name}
                   </p>
                 </div>

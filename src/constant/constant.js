@@ -16,20 +16,20 @@ const links = [
 const socialMedia = [
   {
     name: "Ig",
-    link: "https://www.instagram.com/imamaffandi715/",
+    link: "https://www.instagram.com/imamaffandi01/",
   },
   {
     name: "Gh",
-    link: "https://www.github.com/imamaffandi715/",
+    link: "https://github.com/imamaffandi/",
   },
   {
     name: "Ln",
-    link: "https://www.linkedin.com/in/imamaffandi715/",
+    link: "https://www.linkedin.com/in/imam-affandi-b2ba82290?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B33HVdyNET1epK6A%2FOHNXYQ%3D%3D",
   },
   {
     name: "Fr",
 
-    link: "https://www.whatsapp.com/imamaffandi715/",
+    link: "https://www.fiverr.com/s/R7Ek03x",
   },
 ];
 const projects = [

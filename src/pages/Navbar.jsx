@@ -52,7 +52,7 @@ const Navbar = () => {
         {links.map((link, index) => (
           <li
             key={link.name}
-            className="hover:text-accent"
+            className="hover:border-b"
             ref={(el) => {
               if (navlink.current === null) navlink.current = [];
               navlink.current[index] = el;
