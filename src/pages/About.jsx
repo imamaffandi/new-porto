@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Observer } from "gsap/all";
 import { profile } from "../assets";
 gsap.registerPlugin(ScrollTrigger);
 const services = [
@@ -28,41 +27,67 @@ const About = () => {
   const imageRef = useRef(null);
   const skillsRef = useRef(null);
   const experienceRef = useRef(null);
+  const hoverRef = useRef(null);
+  const imgContainerRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out", duration: 1 },
-      scrollTrigger: {
-        trigger: mainRef.current,
-        start: "top",
-        end: "bottom",
-        scrub: "true",
-      },
-    });
-
-    tl.fromTo(imageRef.current, { scale: 1 }, { scale: 1.2 });
-
     const ctx = gsap.context(() => {
-      gsap.defaults({ ease: "none", duration: 2 });
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: mainRef.current,
-            start: "top",
-            end: "bottom",
-            toggleActions: "restart none none reverse",
-            scrub: 1,
-            pin: true,
-          },
-        })
+      gsap.defaults({ ease: "back.out", duration: 10 });
 
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "top",
+          end: "bottom",
+          toggleActions: "restart none none reverse",
+          scrub: 1,
+          pin: true,
+        },
+      });
+
+      tl.fromTo(
+        aboutRef.current,
+        { x: -100, y: -50, opacity: 0 },
+        { x: 0, y: 0, opacity: 1 },
+        "+=1"
+      )
+        .fromTo(
+          servicesRef.current,
+          { x: 100, y: -50, opacity: 0 },
+          { x: 0, y: 0, opacity: 1 },
+          "+=1"
+        )
+        .fromTo(
+          hoverRef.current,
+          { x: -100, y: 50, opacity: 0 },
+          { x: 0, y: 0, opacity: 1 },
+          "+=1"
+        )
+        .fromTo(
+          imgContainerRef.current,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1 },
+          "+=1"
+        )
         .fromTo(
           imageRef.current,
-          { backgroundPosition: "xPercent: -50, yPercent: -50" },
-          { backgroundPosition: "0 0" },
-          0
+          { y: 0, opacity: 0 },
+          { y: -100, opacity: 1 },
+          "+=1"
         )
-        .fromTo(experienceRef.current, { y: 1000 }, { y: -50 }, "+=1");
+        .fromTo(
+          skillsRef.current,
+          { x: 100, y: 50, opacity: 0 },
+          { x: 0, y: 0, opacity: 1 },
+          "+=1"
+        )
+
+        .fromTo(
+          experienceRef.current,
+          { y: 1000, opacity: 0 },
+          { y: 0, opacity: 1 },
+          "+=1"
+        );
     }, mainRef);
 
     return () => ctx.revert();
@@ -71,11 +96,8 @@ const About = () => {
   return (
     <main className="relative" ref={mainRef}>
       <div className="flex justify-center items-center gap-3 h-screen p-10">
-        <div
-          ref={aboutRef}
-          className="w-1/2 flex flex-col justify-between py-2 h-full "
-        >
-          <div>
+        <div className="w-1/2 flex flex-col justify-between py-2 h-full ">
+          <div ref={aboutRef} className="">
             <p className="text-8xl text-dark px-3 font-black helvetica">
               About Me
             </p>
@@ -85,7 +107,7 @@ const About = () => {
               create engaging, creative, and interactive websites.
             </p>
           </div>
-          <div className="flex flex-col">
+          <div ref={hoverRef} className="flex flex-col">
             <a
               href="../assets/cv/FrontEnd.pdf"
               download
@@ -119,10 +141,13 @@ const About = () => {
             </p>
           </div>
           <div className="text-xl flex justify-center items-center h-1/2 w-full gap-2 ">
-            <div className="h-full w-1/2 full  overflow-hidden">
+            <div
+              ref={imgContainerRef}
+              className="h-full w-1/2 full overflow-hidden "
+            >
               <img
                 ref={imageRef}
-                className="object-cover grayscale"
+                className="object-cover object-bottom"
                 src={profile}
                 alt="profile"
               />

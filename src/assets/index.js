@@ -1,2 +1,2 @@
-import profile from "./001.jpg";
+import profile from "./profil.jpg";
 export { profile };

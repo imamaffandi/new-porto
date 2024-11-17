@@ -1,7 +1,7 @@
 import React from "react";
 import { socialMedia } from "../constant/constant";
 import { SectionWrapper } from "../HOC";
-import StatueScene from "../components/3d/Statue";
+// import StatueScene from "../components/3d/Statue";
 const Footer = () => {
   return (
     <footer className="relative h-screen text-dark">
@@ -13,17 +13,15 @@ const Footer = () => {
               href={social.link}
               target="_blank"
               key={social.name}
-              className="cursor-none uppercase hover:text-accent helvetica text-dark font-medium px-1"
+              className="hoverable cursor-none uppercase hover:text-accent helvetica text-dark font-medium px-1"
             >
               {social.name}
             </a>
           ))}
         </div>
       </section>
-      <div className="h-screen">
-        <StatueScene />
-      </div>
-      <p className="hoverable helvetica bottom-0 text-[5.5rem] absolute w-full text-center font-black uppercase">
+      <div className="h-screen">{/* <StatueScene /> */}</div>
+      <p className="hoverable text-white helvetica bottom-0 text-[5.5rem] absolute w-full mix-blend-difference text-center font-black uppercase">
         imamaffandi715@gmail.com
       </p>
     </footer>

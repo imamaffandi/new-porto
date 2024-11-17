@@ -1,4 +1,4 @@
-import { blackhole, blackstudio } from "../assets/projects/project";
+import { blackstudio } from "../assets/projects/project";
 const links = [
   {
     name: "Home",
@@ -40,7 +40,67 @@ const projects = [
   },
   {
     name: "Blackmotion.id",
-    image: blackhole,
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
+    preview: "https://motion.blackstudio.id",
+  },
+  {
+    name: "Blackmotion.id",
+    image: blackstudio,
     preview: "https://motion.blackstudio.id",
   },
 ];
