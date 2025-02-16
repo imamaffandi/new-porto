@@ -1,6 +1,5 @@
-import Loaders from "./Loaders";
-import Cursor from "./Cursor";
-import Flip from "./Flip";
-import Statue from "./3d/Statue";
-import Minesweeper from "./Minesweeper";
-export { Loaders, Cursor, Flip, Statue, Minesweeper };
+import Slider from "./Slider";
+import { CharSplit } from "./Split";
+import { WordSplit } from "./Split";
+import { LineSplit } from "./Split";
+export { Slider, CharSplit, WordSplit, LineSplit };
