@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-import { profile } from "../assets";
 import "./slider.module.css";
 gsap.registerPlugin(CustomEase);
 

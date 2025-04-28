@@ -1,4 +1,4 @@
-import { blackstudio } from "../assets/projects/project";
+import { img1, img2, img3, img4, img5 } from "../assets/projects/project";
 
 const socialMedia = [
   {
@@ -20,15 +20,11 @@ const socialMedia = [
   },
 ];
 const projects = [
-  {
-    name: "Blackstudio.id",
-    image: blackstudio,
-    preview: "https://blackstudio.id",
-  },
-  {
-    name: "Blackmotion.id",
-    image: blackstudio,
-    preview: "https://motion.blackstudio.id",
-  },
+  { name: "Neon Horizon", image: img1, preview: "#" },
+  { name: "Pixel Odyssey", image: img2, preview: "#" },
+  { name: "Cyber Nexus", image: img3, preview: "#" },
+  { name: "Lunar Drift", image: img4, preview: "#" },
+  { name: "Echo Mirage", image: img5, preview: "#" },
 ];
+
 export { socialMedia, projects };

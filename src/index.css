@@ -3,12 +3,12 @@
 @tailwind utilities;
 body {
   overflow-x: hidden;
-  user-select: none;
+  /* user-select: none; */
 }
 /* Fonts */
 @font-face {
   font-family: "Sans Fransisco";
-  src: url("./fonts/SFUIText-Regular.otf");
+  src: url("./assets/fonts/SFUIText-Light.otf");
 }
 @font-face {
   font-family: "Sans Fransisco Thin";
@@ -21,24 +21,12 @@ body {
   font-family: "Sans Fransisco Thin";
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ef4444;
-}
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
 /* Link */
 a {
   color: #151515;
   position: relative;
   text-decoration: none;
+  font-family: "Sans Fransisco";
 }
 
 a::before {

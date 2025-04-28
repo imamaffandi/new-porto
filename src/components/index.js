@@ -2,4 +2,6 @@ import Slider from "./Slider";
 import { CharSplit } from "./Split";
 import { WordSplit } from "./Split";
 import { LineSplit } from "./Split";
-export { Slider, CharSplit, WordSplit, LineSplit };
+import Transition from "./Transition";
+import Carousel from "./Carousel";
+export { Slider, Transition, Carousel, CharSplit, WordSplit, LineSplit };
