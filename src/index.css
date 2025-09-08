@@ -1,49 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-body {
-  overflow-x: hidden;
-  /* user-select: none; */
-}
-/* Fonts */
-@font-face {
-  font-family: "Sans Fransisco";
-  src: url("./assets/fonts/SFUIText-Light.otf");
-}
-@font-face {
-  font-family: "Sans Fransisco Thin";
-  src: url("./fonts/SFUIText-Light.otf");
-}
-.sf {
-  font-family: "Sans Fransisco";
-}
-.sf-thin {
-  font-family: "Sans Fransisco Thin";
-}
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import "tailwindcss";
 
-/* Link */
-a {
-  color: #151515;
-  position: relative;
-  text-decoration: none;
-  font-family: "Sans Fransisco";
+@theme {
+  --font-body: "JetBrains Mono", monospace;
+  --color-light: #f3f6f3;
+  --color-mid: #4e90f5;
+  --color-accent: #94c000;
 }
-
-a::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border-radius: 4px;
-  background-color: #151515;
-  bottom: 0;
-  left: 0;
-  transform-origin: right;
-  transform: scaleX(0);
-  transition: transform 0.5s ease-in-out;
-}
-
-a:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
+.glass {
+  @apply bg-gray-600/50 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg;
 }
