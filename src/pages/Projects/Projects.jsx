@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ReactLenis } from "lenis/react";
+
+import "./Archive.css";
+import Transition from "../../utils/transition";
+import Preview from "../../components/preview/Preview";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./Projects.css";
-import Transition from "../../utils/transition";
-
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
+const Archive = () => {
     const [archiveList, setArchiveList] = useState([]);
     const containerRef = useRef(null);
 
@@ -89,7 +91,7 @@ const Projects = () => {
                 <div className="container">
                     <div className="overlay"></div>
 
-                    {/* <Preview /> */}
+                    <Preview />
 
                     {archiveList.map((archive) => (
                         <div className="row" key={archive.id}>
@@ -107,4 +109,4 @@ const Projects = () => {
     );
 };
 
-export default Transition(Projects);
+export default Transition(Archive);

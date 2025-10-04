@@ -10,3 +10,44 @@
 .glass {
   @apply bg-gray-600/50 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* footer */
+section.footer {
+  padding: 0;
+  height: 100vh;
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.footer .footer-copy .footer-copy-h1 a {
+  text-decoration: none;
+  color: #000;
+}
+
+section.footer .footer-copy .footer-copy-h1 a h1 {
+  font-size: 200px;
+  font-weight: 400;
+  letter-spacing: -5px;
+}
+
+section.footer .footer-copy .footer-copy-text {
+  margin: 2em 0;
+}
+
+section.footer .footer-copy .footer-copy-text p {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+section.footer .footer-copy .footer-copy-text p a {
+  text-decoration: none;
+  color: #000;
+}

@@ -2,15 +2,16 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Navbar } from "./components";
-import { Home, Projects } from "./pages";
+import { About, Projects, Contact, Admin } from "./pages";
 
 const App = () => {
   const location = useLocation();
 
   const pageTitles = {
-    "/": "Home | Imam Affandi",
+    "/": "About | Imam Affandi",
     "/projects": "Projects | Imam Affandi",
-    "/about": "About | Imam Affandi",
+    "/contact": "Contact | Imam Affandi",
+    "/admin": "Admin | You dont belong here",
   };
 
   useEffect(() => {
@@ -24,14 +25,17 @@ const App = () => {
     }
   }, [location.pathname]);
 
+  if (location.pathname === '/admin') {
+    return <Admin />;
+  }
   return (
     <div className='bg-light font-body'>
       <Navbar />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route index element={<Home />} />
+          <Route index element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </AnimatePresence>
     </div>
