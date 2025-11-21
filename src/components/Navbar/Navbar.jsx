@@ -9,28 +9,22 @@ const Navbar = () => {
                     {/* Logo/Brand */}
                     <Link
                         to="/"
-                        className="text-mid font-semibold text-2xl"
+                        className="font-semibold text-lg mix-blend-color"
                     >
                         Imam Affandi
                     </Link>
 
                     {/* Navigation Links */}
-                    <div className="flex space-x-8">
+                    <div className="flex space-x-2">
                         <Link
                             to="/projects"
-                            className={({ isActive }) =>
-                                ` glass w-20 h-5 transition-colors ${isActive ? 'font-medium' : ''
-                                }`
-                            }
+                            className="text-xs border-r border-gray-400 pr-2"
                         >
                             Projects
                         </Link>
                         <Link
                             to="/contact"
-                            className={({ isActive }) =>
-                                ` glass w-20 h-5 transition-colors ${isActive ? 'font-medium' : ''
-                                }`
-                            }
+                            className="text-xs"
                         >
                             Contact
                         </Link>

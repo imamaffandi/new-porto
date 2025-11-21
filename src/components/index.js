@@ -1,2 +1,5 @@
 import Navbar from "./Navbar/Navbar";
-export { Navbar };
+import Preview from "./preview/Preview";
+import SmoothScroll from "./SmoothScroll";
+import SplitText from "./SplitText";
+export { Navbar, Preview, SmoothScroll, SplitText };

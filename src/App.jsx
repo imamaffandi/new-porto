@@ -2,20 +2,20 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Navbar } from "./components";
-import { About, Projects, Contact, Admin } from "./pages";
+import { About, Projects, Contact, Admin, Page404 } from "./pages";
 
 const App = () => {
   const location = useLocation();
 
   const pageTitles = {
-    "/": "About | Imam Affandi",
-    "/projects": "Projects | Imam Affandi",
-    "/contact": "Contact | Imam Affandi",
+    "/": "Home | Imam Affandi — Web Solution",
+    "/projects": "Projects | Imam Affandi — Web Solution",
+    "/contact": "Contact | Imam Affandi — Web Solution",
     "/admin": "Admin | You dont belong here",
   };
 
   useEffect(() => {
-    const currentTitle = pageTitles[location.pathname] || "Imam Affandi";
+    const currentTitle = pageTitles[location.pathname] || "Imam Affandi — Web Solution";
     document.title = currentTitle;
 
     if (location.pathname !== "/projects") {
@@ -30,12 +30,14 @@ const App = () => {
   }
   return (
     <div className='bg-light font-body'>
+
       <Navbar />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route index element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </AnimatePresence>
     </div>
