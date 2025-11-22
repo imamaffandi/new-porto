@@ -38,8 +38,9 @@
 
 .archive-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
 }
 
 p#archive-category {

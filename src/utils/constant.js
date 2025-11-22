@@ -11,55 +11,65 @@ import Img10 from "../assets/archive/img10.jpg";
 
 const previewProject = [
   {
+    link: "",
     img: Img1,
     title: "Project One",
     description: "A sleek and modern design project showcasing clean layouts.",
   },
   {
+    link: "",
     img: Img2,
     title: "Project Two",
     description: "An experimental build featuring bold colors and animations.",
   },
   {
+    link: "",
     img: Img3,
     title: "Project Three",
     description: "A minimal landing page crafted with simplicity in mind.",
   },
   {
+    link: "",
     img: Img4,
     title: "Project Four",
     description:
       "An e-commerce interface prototype focused on user experience.",
   },
   {
+    link: "",
     img: Img5,
     title: "Project Five",
     description:
       "A creative portfolio concept displaying vibrant visual elements.",
   },
   {
+    link: "",
     img: Img6,
     title: "Project Six",
     description: "A web app dashboard designed with clarity and usability.",
   },
   {
+    link: "",
     img: Img7,
     title: "Project Seven",
     description: "A branding mockup highlighting strong typography choices.",
   },
   {
+    link: "",
     img: Img8,
     title: "Project Eight",
     description:
       "An interactive gallery project with smooth scrolling effects.",
   },
   {
+    link: "",
     img: Img9,
     title: "Project Nine",
     description:
       "A futuristic concept site exploring unique navigation patterns.",
   },
   {
+    link: "",
     img: Img10,
     title: "Project Ten",
     description:
