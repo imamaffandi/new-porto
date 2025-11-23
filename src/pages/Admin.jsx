@@ -194,7 +194,7 @@ const Admin = () => {
                         <button
                             onClick={() => {
                                 logout();
-                                navigate('/login');
+                                navigate('/');
                             }}
                             className="px-4 md:px-6 py-2 md:py-3 rounded-lg bg-red-600 text-white text-sm md:text-base font-medium hover:bg-red-700 transition-all shadow-md active:scale-95"
                         >

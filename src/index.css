@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Coolvetica";
-  src: url("/Coolvetica.otf");
+  font-family: "Switzer";
+  src: url("/Switzer.otf");
 }
 @font-face {
-  font-family: "Creato";
-  src: url("/Creato.otf");
+  font-family: "Jakarta-sans";
+  src: url("/Jakarta-sans.ttf");
 }
 
 @theme {
-  --font-head: "Coolvetica", monospace;
-  --font-body: "Creato", monospace;
-  --color-light: #f3f6f3;
-  --color-dark: #000000;
+  --font-head: "Switzer", monospace;
+  --font-body: "Jakarta-sans", monospace;
+  --color-light: #c5c9cd;
+  --color-dark: #191e25;
 }
 ::-webkit-scrollbar {
   width: 0;

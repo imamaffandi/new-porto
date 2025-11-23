@@ -1,2 +1,3 @@
 import tick from "./tick.wav";
-export { tick };
+import pdf from "./ImamAffandiFrontend.pdf";
+export { tick, pdf };
