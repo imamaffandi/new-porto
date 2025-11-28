@@ -4,7 +4,6 @@ import { ReactLenis } from "lenis/react";
 import "./Projects.css";
 import { previewProject } from "../../utils/constant";
 import { tick } from "../../assets";
-import { projectAPI } from "../../services/api";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,44 +12,18 @@ gsap.registerPlugin(ScrollTrigger);
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [archiveList, setArchiveList] = useState([]);
-    const [loading, setLoading] = useState(true);
     const containerRef = useRef(null);
+    const previewImgRef = useRef(null);
+    const isInitialLoad = useRef(true);
     const [previewImg, setPreviewImg] = useState(null);
+    const [centeredIndex, setCenteredIndex] = useState(null);
 
-    // Fetch projects from API
+    // Load projects from constant.js
     useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                setLoading(true);
-                const data = await projectAPI.getAll();
-
-                // Transform API data to match expected structure
-                const transformedProjects = data.map((project) => ({
-                    link: project.link || "",
-                    img: project.images && project.images.length > 0 ? project.images[0] : "",
-                    title: project.name || "",
-                    description: project.description || "",
-                }));
-
-                // Use API data if available, otherwise fallback to dummy data
-                const projectsToUse = transformedProjects.length > 0 ? transformedProjects : previewProject;
-                setProjects(projectsToUse);
-
-                // Set default preview image
-                if (projectsToUse.length > 0) {
-                    setPreviewImg(projectsToUse[0]);
-                }
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-                // Fallback to dummy data on error
-                setProjects(previewProject);
-                setPreviewImg(previewProject[0]);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProjects();
+        setProjects(previewProject);
+        if (previewProject.length > 0) {
+            setPreviewImg(previewProject[0]);
+        }
     }, []);
 
     // Generate archive list from projects
@@ -104,6 +77,17 @@ const Projects = () => {
                 const projectIndex = itemIndex % projects.length;
                 const selectedPreviewImg = projects[projectIndex];
 
+                // Check if item is centered (within a threshold)
+                const rect = closestItem.getBoundingClientRect();
+                const itemCenter = rect.top + rect.height / 2;
+                const isCentered = Math.abs(itemCenter - viewportCenter) < 50; // 50px threshold
+
+                if (isCentered) {
+                    setCenteredIndex(itemIndex);
+                } else {
+                    setCenteredIndex(null);
+                }
+
                 if (selectedPreviewImg && selectedPreviewImg !== previewImg) {
                     setPreviewImg(selectedPreviewImg);
                     tickSound.play();
@@ -122,6 +106,67 @@ const Projects = () => {
             window.removeEventListener("resize", handleScroll);
         };
     }, [previewImg, projects]);
+
+    // Enter animation
+    useEffect(() => {
+        if (containerRef.current && archiveList.length > 0 && previewImg && isInitialLoad.current) {
+            const archiveItems = containerRef.current.querySelectorAll(".archive-item");
+            const previewImage = previewImgRef.current;
+
+            // Set initial states
+            gsap.set(archiveItems, { opacity: 0, y: 30 });
+            if (previewImage) gsap.set(previewImage, { opacity: 0, scale: 0.9 });
+
+            // Create timeline for enter animation
+            const tl = gsap.timeline();
+
+            // Animate archive items first with faster stagger
+            tl.to(
+                archiveItems,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.01,
+                    ease: "power2.out",
+                },
+                0
+            );
+
+            // Animate preview image after list animation starts
+            if (previewImage) {
+                tl.to(
+                    previewImage,
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.6,
+                        ease: "power3.out",
+                    },
+                    1
+                );
+            }
+
+            isInitialLoad.current = false;
+        }
+    }, [archiveList, previewImg]);
+
+    // Animate preview image when it changes (not on initial load)
+    useEffect(() => {
+        if (previewImgRef.current && !isInitialLoad.current) {
+            const previewImage = previewImgRef.current;
+            gsap.fromTo(
+                previewImage,
+                { opacity: 0, scale: 0.95 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                }
+            );
+        }
+    }, [previewImg]);
 
     useEffect(() => {
         if (containerRef.current && archiveList.length > 0) {
@@ -158,16 +203,6 @@ const Projects = () => {
         }
     }, [archiveList]);
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 animate-spin">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                </svg>
-            </div>
-        );
-    }
-
     if (!previewImg) {
         return null;
     }
@@ -188,19 +223,32 @@ const Projects = () => {
                 <div className="container">
                     <div className="overlay"></div>
                     {previewImg.img && (
-                        <a href={previewImg.link} target="_blank" className="outline-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 aspect-video rounded-lg overflow-hidden opacity-75 md:opacity-100 -z-10 md:z-50">
+                        <a
+                            href={previewImg.link}
+                            target="_blank"
+                            ref={previewImgRef}
+                            className="outline-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 aspect-video rounded-lg overflow-hidden opacity-75 md:opacity-100 -z-10 md:z-50"
+                        // className="outline-none fixed h-screen w-full top-0 left-0 flex items-center overflow-hidden opacity-75 md:opacity-100 -z-10 md:z-50"
+                        >
                             <img src={previewImg.img} alt="currently selected source" className="object-cover w-full h-full" />
+                            {/* <img src={previewImg.img} alt="currently selected source" className="object-cover w-1/2 h-full" /> */}
+                            {/* <div className="w-1/2 h-screen bg-green-500"></div> */}
                         </a>
                     )}
                     {archiveList.map((archive, index) => (
                         <div className="row px-2" key={archive.id} data-index={index}>
                             <div className="archive-item">
-                                <a href={archive.link || "#"} target="_blank" rel="noopener noreferrer">
-                                    <div className="archive-details ">
-                                        <h1 id="archive-name" className="text-xl font-light tracking-wider font-head">{archive.title}</h1>
-                                        <p id="archive-category" className="text-xs tracking-widest font-body">{archive.description}</p>
-                                    </div>
-                                </a>
+                                {/* <a href={archive.link || "#"} target="_blank" rel="noopener noreferrer"> */}
+                                <div className="archive-details ">
+                                    <h1
+                                        id="archive-name"
+                                        className={`text-xl font-light tracking-wider font-head ${centeredIndex === index ? 'centered-text' : ''}`}
+                                    >
+                                        {archive.title}
+                                    </h1>
+                                    {/* <p id="archive-category" className="text-xs tracking-widest font-body max-w-2/3">{archive.description}</p> */}
+                                </div>
+                                {/* </a> */}
                             </div>
                         </div>
                     ))}

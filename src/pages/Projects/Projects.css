@@ -18,6 +18,7 @@
     rgba(197, 201, 205, 1) 100%
   );
   pointer-events: none;
+  z-index: 10;
 }
 
 .archive .row {
@@ -45,6 +46,14 @@
 
 p#archive-category {
   text-align: right;
+}
+
+#archive-name {
+  transition: transform 0.3s ease;
+}
+
+#archive-name.centered-text {
+  transform: translateX(20px);
 }
 
 @media (max-width: 900px) {

@@ -1,3 +1,3 @@
 import Float from "./Float";
-import Loading from "./Loading";
-export { Float, Loading };
+import SplitText from "./SplitText";
+export { Float, SplitText };

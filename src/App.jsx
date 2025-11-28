@@ -1,52 +1,14 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { Projects, Admin } from './pages'
-import Login from './pages/Login'
+import { Projects } from './pages'
 import { Float } from './components'
-import { AuthProvider, useAuth } from './context/AuthContext'
-
-// Protected Route Component
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth()
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#000000" className="size-6 animate-spin">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-        </svg>
-      </div>
-    )
-  }
-
-  return isAuthenticated ? children : <Navigate to="/login" replace />
-}
-
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<><Projects /><Float /></>} />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <Admin />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
-  )
-}
 
 const App = () => {
   return (
-    <AuthProvider>
-      <div>
-        <AppRoutes />
-      </div>
-    </AuthProvider>
-  )
+    <>
+      <Projects />
+      <Float />
+    </>
+  );
 }
 
 export default App

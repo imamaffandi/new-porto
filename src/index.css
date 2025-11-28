@@ -14,6 +14,15 @@
   --font-body: "Jakarta-sans", monospace;
   --color-light: #c5c9cd;
   --color-dark: #191e25;
+  --animate-spin: spin 1s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(-0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
 }
 ::-webkit-scrollbar {
   width: 0;
